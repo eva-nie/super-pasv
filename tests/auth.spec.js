@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import AuthHelper from'../helpers/auth.helper';
+import AuthHelper from '../helpers/auth.helper';
 
 describe('Auth', function () {
     const credentials = {
@@ -13,11 +13,11 @@ describe('Auth', function () {
         }
     }
 
-   describe('Successful log in', function () {
-       const authHelper = new AuthHelper();
+    describe('Successful log in', function () {
+        const authHelper = new AuthHelper();
 
-        before(async function(){
-           await authHelper.post(credentials.valid.login, credentials.valid.password);
+        before(async function () {
+            await authHelper.post(credentials.valid.login, credentials.valid.password);
 
         })
 
@@ -33,7 +33,7 @@ describe('Auth', function () {
     describe('Log in with wrong credentials should return error', function () {
         const authHelper = new AuthHelper();
 
-        before(async function(){
+        before(async function () {
             await authHelper.post(credentials.invalid.login, credentials.invalid.password);
         });
 
@@ -43,7 +43,6 @@ describe('Auth', function () {
 
         it('Response body contains error message', function () {
             expect(authHelper.response.body.message).to.eq('Wrong login or password.');
-
-            });
         });
+    });
 });
