@@ -11,10 +11,7 @@ if(baseUrl.includes('localhost') && baseUrl.includes(port))
     start(port);
 
 before(async function () {
-      console.log(`BASE_URL: ${process.env.BASE_URL}`);
-      console.log(`LOGIN: ${process.env.LOGIN}`);
-      console.log(`PASSWORD: ${process.env.PASSWORD}`);
-      await supertest(process.env.BASE_URL)
+    await supertest(process.env.BASE_URL)
         .post('/auth')
         .send({login: process.env.LOGIN, password: process.env.PASSWORD})
         .then((res) => { process.env.TOKEN = res.body.token });
